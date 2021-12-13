@@ -1,4 +1,9 @@
 
+
+'''
+References: https://stackoverflow.com/questions/25458879/algorithm-to-produce-all-partitions-of-a-list-in-order/25460561
+'''
+
 def partition_generator(arr):
     """
     Generates and returns all partitions of an array.
