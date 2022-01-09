@@ -18,10 +18,22 @@ class PrefixSum2D:
         """
         Query the sum of the 2D array in the inclusive range: (r1, c1) to (r2, c2).
         s = sum(mat[r][c] for r in range(r1, r2 + 1) for c in range(c1, c2 + 1))
-        Constraints: r1 <= r2 and c1 <= c2
+        Constraints: r1 <= r2 and c1 <= c2. Zero-indexed.
         """
         pre = self.pre
         add1, add2 = pre[r2 + 1][c2 + 1], pre[r1][c1]
         sub1, sub2 = pre[r2 + 1][c1], pre[r1][c2 + 1]
         return add1 + add2 - sub1 - sub2
+
+
+if __name__ == '__main__':
+    mat = [
+        [1, 2, 3, 4], 
+        [5, 6, 7, 8],
+        [9, 10, 11, 12]
+    ]
+
+    obj = PrefixSum2D(mat)
+
+    print('The sum of the in the range (1, 1) to (2, 2) is:', obj.query(1, 1, 2 ,2))
 
