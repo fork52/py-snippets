@@ -20,7 +20,6 @@ class DSU(ABC):
 class DsuList(DSU):
     def __init__(self, size : int):
         self.parent = [-1] * size
-        self.n = size
 
     def findSet(self, node : int) -> int:
         '''
@@ -58,9 +57,8 @@ class DsuList(DSU):
         return -self.parent[self.findSet(u)]
 
 class DsuDict(DsuList):
-    def __init__(self, size : int):
+    def __init__(self):
         self.parent = defaultdict(lambda : int(-1))
-        self.n = size
 
 if __name__ == '__main__':
     obj = DsuList(1)
