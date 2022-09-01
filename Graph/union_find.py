@@ -1,13 +1,31 @@
 from abc import abstractmethod, ABC, abstractclassmethod
+from collections import defaultdict
 
-class DSU:
+class DSU(ABC):
+    def __init__(self) -> None:
+        super().__init__()
+
+    @abstractmethod
+    def findSet(self, node : int) -> int:
+        pass
+
+    @abstractmethod
+    def unionSet(self, u : int, v : int) -> bool:
+        pass
+
+    @abstractmethod
+    def componentSize(self, u : int) -> int:
+        pass
+
+class DsuList(DSU):
     def __init__(self, size : int):
         self.parent = [-1] * size
         self.n = size
 
     def findSet(self, node : int) -> int:
-        '''Returns the representative node for the connected component the node
-            `node` belongs to.    
+        '''
+        Returns the representative node for the connected component the node
+        `node` belongs to.
         '''
         if self.parent[node] < 0:
             return node
@@ -39,6 +57,12 @@ class DSU:
         '''
         return -self.parent[self.findSet(u)]
 
+class DsuDict(DsuList):
+    def __init__(self, size : int):
+        self.parent = defaultdict(lambda : int(-1))
+        self.n = size
 
 if __name__ == '__main__':
+    obj = DsuList(1)
+    obj = DsuDict(2)
     pass
