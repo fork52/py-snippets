@@ -1,5 +1,7 @@
 class MaxSegmentTree:
-    identity: int = -(10**8)
+    identity: int = -(10**15)
+
+    __slots__ = ('leftInd', 'rightInd', 'arr', 'nodeMax', 'left', 'right')
 
     def __init__(self, leftInd: int, rightInd: int, arr: int):
         self.leftInd = leftInd
